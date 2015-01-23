@@ -1,0 +1,64 @@
+% 2015
+% Łukasz Dąbek & Maciej Szeptuch
+% II UWr
+
+\documentclass[slidestop, compress, 10pt]{beamer}
+\usetheme{Antibes}
+\usecolortheme{lily}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+
+\usepackage{multicol}
+\usepackage{graphicx}
+
+%% Kropka po numerze paragrafu, podparagrafu, itp.
+\makeatletter
+    \renewcommand\@seccntformat[1]{\csname the#1\endcsname.\quad}
+    \renewcommand\numberline[1]{#1.\hskip0.7em}
+\makeatother
+
+%% Numeracja wzorów
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+
+%% Plan przed każdą sekcją
+\AtBeginSection[]
+{
+    \begin{frame}<beamer>
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Wireless}
+\subtitle{costam costam}
+\author{Łukasz Dąbek \& Maciej Szeptuch}
+\date{Wrocław, \today}
+
+\begin{document}
+
+% STRONA TYTUŁOWA
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% PLAN
+\begin{frame}
+    \frametitle{Plan}
+    \tableofcontents
+\end{frame}
+
+% Opis
+\section{Model}
+    \begin{frame}
+        \frametitle{Model}
+    \end{frame}
+
+\section{NP}
+\section{Approx}
+\section{Wypukłości itd.}
+\section{TODO}
+\end{document}
