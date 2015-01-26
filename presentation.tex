@@ -176,9 +176,9 @@
     \begin{theorem}
         Problem Multi-Slot w modelu SINR jest NP-trudny.
     \end{theorem}
-    \begin{wrapfigure}{R}{0.4\textwidth}
-        \includegraphics[width=0.4\textwidth]{pictures/np-placement1.png}
-    \end{wrapfigure}
+    %\begin{wrapfigure}{R}{0.4\textwidth}
+    %    \includegraphics[width=0.4\textwidth]{pictures/np-placement1.png}
+    %\end{wrapfigure}
     \begin{block}{Dowód(Schemat)}
         \begin{itemize}
             \item $I = \{i_1, \ldots. i_n\}$ - zbiór liczb z Problemu Podziału o sumie $\sigma$
@@ -195,9 +195,9 @@
     \begin{theorem}
         Problem Multi-Slot w modelu SINR jest NP-trudny.
     \end{theorem}
-    \begin{wrapfigure}{R}{0.4\textwidth}
-        \includegraphics[width=0.4\textwidth]{pictures/np-placement2.png}
-    \end{wrapfigure}
+    %\begin{wrapfigure}{R}{0.4\textwidth}
+    %    \includegraphics[width=0.4\textwidth]{pictures/np-placement2.png}
+    %\end{wrapfigure}
     \begin{block}{Dowód(Schemat cd.)}
         \begin{itemize}
             \item $pos(r_{n+1}) = pos(r_{n+2}) = (0, 0)$
@@ -213,9 +213,9 @@
     \begin{theorem}
         Problem Multi-Slot w modelu SINR jest NP-trudny.
     \end{theorem}
-    \begin{wrapfigure}{R}{0.4\textwidth}
-        \includegraphics[width=0.4\textwidth]{pictures/np-placement3.png}
-    \end{wrapfigure}
+    %\begin{wrapfigure}{R}{0.4\textwidth}
+    %    \includegraphics[width=0.4\textwidth]{pictures/np-placement3.png}
+    %\end{wrapfigure}
     \begin{block}{Dowód(Schemat cd.)}
         \begin{lemma}
             Niech $L_i = \{l_j: 1 \leq j \leq n + 1, i \neq j\}$.\\
@@ -230,7 +230,180 @@
     \end{block}
 \end{frame}
 
-\section{Approx}
-\section{Wypukłości itd.}
-\section{TODO}
+\section{Aproksymacja One-Shot}
+\begin{frame}
+    \frametitle{Problem}
+        Czy instnieje algorytm rozwiązujący One-Shot Scheduling działający w czasie wielomianowym,
+        który daje wynik gorszy tylko o stały czynnik od optymalnego?
+        \pause
+        \vfill
+        Tak.
+\end{frame}
+
+\subsection{Wiadomości wstępne}
+\begin{frame}
+    \frametitle{Notacja}
+    \begin{itemize}
+        \item Wpływ: $a_v(S) = \eta_v \sum_{w \in S} \frac{I_{wv}}{P_{vv}}$
+        \item Łatwość zakłócenia: $\eta_v = \frac{1}{\frac{1}{\beta} - \frac{N}{P_{vv}}}$
+        \item $OPT_p$ - rozwiązanie, w którym dla każdego połączenia $v$: $a_v(OPT_p) \le p^{-\alpha}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Własności wpływu}
+    \begin{definition}
+        $a_v(S) = \eta_v \sum_{w \in S} \frac{I_{wv}}{P_{vv}}$\\
+        $\eta_v = \frac{1}{\frac{1}{\beta} - \frac{N}{P_{vv}}}$
+    \end{definition}
+    \begin{lemma}
+        Jeśli $S_1$ i $S_2$ są rozłącznymi zbiorami połączeń, to $a_v(S_1 \cup S_2) = a_v(S_1) + a_v(S_2)$.
+    \end{lemma}
+    \begin{lemma}
+        Zestaw połączeń $S$ jest realizowalny wtedy i tylko wtedy, gdy dla każdego $v$ zachodzi:
+        $a_v(S) \le 1$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{$q$-bliskość}
+    \begin{definition}
+        Mówimy, że połączenie $w$ jest $q$-blisko połączenia $v$ jeśli $d_{wv} \ge q \eta_v^{1/\alpha} d_{vv}$.
+        Równoważnie: $a_v(w) = a_v(\{w\}) \ge q^{-\alpha}$.
+    \end{definition}
+
+    \begin{definition}
+        Zbiór $S$ jest $q$-rozproszony, jeżeli dla każdej pary połączeń $v$, $w$ w $S$ połączenie $w$ nie jest $q$-blisko połączenia $v$.
+    \end{definition}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Algorytm}
+    Niech $\lambda$ będzie pewną (dużą) stałą, do ustalenia później.
+    \begin{itemize}
+        \item Postortuj połączenia w kolejności rosnącej długości: $l_1, l_2, \cdots, l_n$.
+        \item Niech $S = \varnothing$.
+        \item Dla połączenia $l_i = l_1, l_2, \cdots, l_n$: 
+        \begin{itemize}
+            \item Jeśli $a_{l_i}(S) \le \lambda^{-\alpha}$ dodaj $l_i$ do $S$.
+        \end{itemize}
+        \item Zwróć $S$.
+    \end{itemize}
+    \pause
+    \vfill
+    \begin{itemize}
+        \item Czy zwrócony zbiór jest realizowalny?
+        \pause
+        \item Czy zwrócony zbiór jest tylko o stały czynnik większy od optymalnego?
+    \end{itemize}
+\end{frame}
+
+\subsection{Poprawność algorytmu}
+\begin{frame}
+    \frametitle{Rozproszenie rozwiązania}
+    \begin{lemma}
+        Zwrócony zbiór połączeń jest $(\lambda - 2)$-rozproszony.
+    \end{lemma}
+    Dowód: nierówność trójkąta. \\
+    \centering
+    \includegraphics[width=0.6\textwidth]{pictures/triangle-inequality.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lemat o pierścieniach}
+    \begin{lemma}
+        Niech $S$ będzie $\delta$-rozproszony i niech $v$ będzie najkrótszym połączeniem w $S$. Wtedy:
+        \begin{equation*}
+            a_v(S) \lesssim \delta^{-\alpha}
+        \end{equation*}
+    \end{lemma}
+    \centering
+    \includegraphics[width=0.6\textwidth]{pictures/rings.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lemat o pierścieniach}
+    \begin{lemma}
+        Jedyny odbiornik w promieniu $\delta \eta_v^{1/\alpha} d_{vv}$ od nadajnika $r_w$ to
+        co najwyżej $s_w$.
+    \end{lemma}
+    \pause
+    \begin{lemma}
+        Dookoła każdego odbiornika nie ma innych odbiorników w promieniu $d_{vv}(\delta\eta_v^{1/\alpha} - 1)/2$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lemat o pierścieniach}
+    \centering
+    \includegraphics[width=0.7\textwidth]{pictures/rings.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lemat o pierścieniach}
+    \centering
+    \includegraphics[width=0.7\textwidth]{pictures/bigger-rings.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lemat o pierścieniach}
+    \centering
+    \includegraphics[width=0.7\textwidth]{pictures/rings.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Poprawność rozwiązania}
+    \begin{lemma}
+        Rozwiązanie zwracane przez algorytm zachłanny jest poprawne (tj. spełnialne w sensie SINR).
+    \end{lemma}
+    Dla ustalonego połączenia $l_v$ dzielimy zbiór połączeń na krótsze niż $l_v$ i dłuższe - odpowiednio $S^{-}$ i $S^{+}$.
+    Z definicji algorytmu mamy $a_{l_v}(S^{-}) \le \lambda^{-\alpha}$. Z lematu o pierścieniach mamy
+    $a_{l_v}(S^{+}) \lesssim (\lambda - 2)^{-\alpha}$. \\
+    Zatem dobierając odpowiednio duże $\lambda$ zapewniamy, że $a_{l_v}(S) \le 1/2$.
+\end{frame}
+
+
+\subsection{Jakość rozwiązania}
+\begin{frame}
+    \frametitle{Lemat o niebieskich punktach}
+    \begin{definition}
+        Rozważmy dwa skończone zbiory punktów $\mathcal{R}, \mathcal{B}$ nazywane odpowiednio czerwonymi i
+        niebieskimi. Mówimy, że punkt $b \in \mathcal{B}$ jest q-niebiesko-dominujący, jeżeli każde koło
+        o środku w $b$ zawiera przynajmniej q razy więcej punktów niebieskich niż czerwonych.
+    \end{definition}
+    \vfill
+    \begin{lemma}
+        Jeżeli $|\mathcal{B}| \ge 6q|\mathcal{R}|$, to istnieje punkt q-niebiesko-dominujący.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lemat o niebieskich punktach}
+    \centering
+    \includegraphics[width=0.7\textwidth]{pictures/blue-dominant-1.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Lemat o niebieskich punktach}
+    \centering
+    \includegraphics[width=0.7\textwidth]{pictures/blue-dominant-2.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Porównanie jakości rozwiązania z $OPT_p$}
+    \begin{lemma}
+        Niech $S$ będzie rozwiązaniem wyprodukowanym przez algorytm zachłanny. Wtedy:
+        $|S| \lesssim |OPT_{\lambda^{\alpha}}|$.
+    \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{$|OPT_p| \lesssim |OPT|$}
+    \begin{lemma}
+        $|OPT_p| \le \lceil (2p)^2 \rceil |OPT|$
+    \end{lemma}
+\end{frame}
+
+\section{Wypukłość obszarów SINR}
+\section{Do zrobienia}
 \end{document}
