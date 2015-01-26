@@ -60,10 +60,13 @@
 \end{frame}
 
 \def \si {{\color{green}s_i}}
+\def \ggi {{\color{green}i}}
 \def \sj {{\color{green}s_j}}
 
 \def \ri {{\color{red}r_i}}
+\def \rri {{\color{red}i}}
 \def \rj {{\color{red}r_j}}
+\def \rrj {{\color{red}j}}
 
 \def \li {{\color{blue}l_i}}
 \def \lj {{\color{blue}l_j}}
@@ -107,8 +110,8 @@
             \item $P(\si)$ - moc nadawcy
             \item $\dij^{-\alpha}$ - współczynnik straty sygnału
             \item $\alpha$ - dobierana doświadczalnie, zależna od warunków otoczenia, zazwyczaj $2 \le \alpha \leq 6$
-            \item $P_{\ri}(\si) = P(\si) / \dii^\alpha$ - moc sygnału połączenia $\li$
-            \item $I_{\rj}(\si) = P_{\rj}(\si)$ - interferencja wprowadzana przez $\si$ dla odbiorcy $\rj$
+            \item $P_{\rri\ggi} = P_{\ri}(\si) = P(\si) / \dii^\alpha$ - moc sygnału połączenia $\li$
+            \item $I_{\rrj\ggi} = I_{\rj}(\si) = P_{\rj}(\si)$ - interferencja wprowadzana przez $\si$ dla odbiorcy $\rj$
         \end{itemize}
     \end{frame}
     \begin{frame}
@@ -230,10 +233,10 @@
     \end{block}
 \end{frame}
 
-\section{Aproksymacja One-Shot}
+\section{Aproksymacja One-Slot}
 \begin{frame}
     \frametitle{Problem}
-        Czy instnieje algorytm rozwiązujący One-Shot Scheduling działający w czasie wielomianowym,
+        Czy instnieje algorytm rozwiązujący One-Slot Scheduling działający w czasie wielomianowym,
         który daje wynik gorszy tylko o stały czynnik od optymalnego?
         \pause
         \vfill
@@ -283,7 +286,7 @@
     \begin{itemize}
         \item Postortuj połączenia w kolejności rosnącej długości: $l_1, l_2, \cdots, l_n$.
         \item Niech $S = \varnothing$.
-        \item Dla połączenia $l_i = l_1, l_2, \cdots, l_n$: 
+        \item Dla połączenia $l_i = l_1, l_2, \cdots, l_n$:
         \begin{itemize}
             \item Jeśli $a_{l_i}(S) \le \lambda^{-\alpha}$ dodaj $l_i$ do $S$.
         \end{itemize}
