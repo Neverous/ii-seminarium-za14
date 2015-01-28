@@ -9,10 +9,21 @@ power = 10.0
 points = set()
 drawArea = None
 
+COLORS = [
+        QtGui.QColor(0xD3, 0xD7, 0xCF, 50),
+        QtGui.QColor(0xED, 0xD4, 0x00, 50),
+        QtGui.QColor(0x73, 0xD2, 0x16, 50),
+        QtGui.QColor(0xF5, 0x79, 0x00, 50),
+        QtGui.QColor(0xC1, 0x7D, 0x11, 50),
+        QtGui.QColor(0x34, 0x65, 0xA4, 50),
+        QtGui.QColor(0x75, 0x50, 0x7B, 50),
+        QtGui.QColor(0x55, 0x57, 0x53, 50),
+        QtGui.QColor(0xCC, 0x00, 0x00, 50),
+]
+
 def managePoints(e):
     x = e.x() * resolution[0] // drawArea.width()
     y = e.y() * resolution[1] // drawArea.height()
-    print(x, y)
     if QtGui.QApplication.keyboardModifiers() == QtCore.Qt.ControlModifier:
         points.remove((x, y))
 
@@ -50,25 +61,30 @@ def simulate(e):
     for x in range(resolution[0]):
         for y in range(resolution[1]):
             signals = []
-            for p in points:
+            for i, p in enumerate(points):
                 if (x, y) == p:
                     continue
 
-                signals.append(power * resolution[0] / 10 / distance((x, y), p) ** 2)
+                signals.append((power * resolution[0] / 10 / distance((x, y), p) ** 2, i))
 
             signals.sort()
             if not signals:
                 continue
 
-            if signals[-1] / (sum(signals) - signals[-1] + 1.0) >= beta:
-                painter.drawRect(x * drawArea.width() // resolution[0],
-                                 y * drawArea.height() // resolution[1],
-                                 drawArea.width() // resolution[0],
-                                 drawArea.height() // resolution[1])
+            summed = sum([p for p, _ in signals])
+            for s, i in signals:
+                if s / (summed - s + 1.0) >= beta:
+                    painter.setBrush(COLORS[i % len(COLORS)])
+                    painter.setPen(COLORS[i % len(COLORS)])
+                    painter.drawRect(x * drawArea.width() // resolution[0],
+                                     y * drawArea.height() // resolution[1],
+                                     drawArea.width() // resolution[0],
+                                     drawArea.height() // resolution[1])
 
 
 
     painter.setBrush(QtCore.Qt.black)
+    painter.setPen(QtCore.Qt.black)
     for (x, y) in points:
         painter.drawRect(x * drawArea.width() // resolution[0],
                          y * drawArea.height() // resolution[1],

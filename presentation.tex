@@ -88,14 +88,13 @@
         Oznaczenia
         \begin{itemize}
             \item $L = \{\lo, \ldots, \ln\}$ - połączenia
-            \item $\li = (\si, \ri)$ \\ $\si$ - nadawca i $\ri$ - odbiorca
-            \item $\dij = d(\si, \rj)$ \\ odległość pomiędzy nadawcą $\si$ a odbiorcą $\rj$
-            \item $\dii$ - długość połączenia $\li$
+            \item $\li = (\si, \ri)$
+            \item $\dij = d(\si, \rj)$
         \end{itemize}
         Założenia
         \begin{itemize}
-            \item Znormalizowane dane \\ $\forall_{\si, \rj} \dij \geq 1$
-            \item Każdy nadawca i odbiorca należy do dokładnie jednego połączenia
+            \item $\forall_{\si, \rj} \dij \geq 1$
+            \item Każdy nadajnik i odbiornik należy do dokładnie jednego połączenia
             \item Jednostkowe obciążenia
         \end{itemize}
     \end{frame}
@@ -103,27 +102,27 @@
         \frametitle{Model}
         \begin{wrapfigure}{R}{0.5\textwidth}
             \includegraphics[width=0.5\textwidth]{pictures/model-diagram1.png}
-            \caption{$\alpha=2, \beta=1, P=10$}
+            \caption{$\alpha=2, \beta=1, P=1000$}
         \end{wrapfigure}
         Oznaczenia cd.:
         \begin{itemize}
-            \item $P(\si)$ - moc nadawcy
-            \item $\dij^{-\alpha}$ - współczynnik straty sygnału
-            \item $\alpha$ - dobierana doświadczalnie, zależna od warunków otoczenia, zazwyczaj $2 \le \alpha \leq 6$
-            \item $P_{\rri\ggi} = P_{\ri}(\si) = P(\si) / \dii^\alpha$ - moc sygnału połączenia $\li$
-            \item $I_{\rrj\ggi} = I_{\rj}(\si) = P_{\rj}(\si)$ - interferencja wprowadzana przez $\si$ dla odbiorcy $\rj$
+            \item $P(\si)$ - moc
+            \item $\dij^{-\alpha}$ - strata sygnału
+            \item $\alpha$ - zazwyczaj $2 \le \alpha \leq 6$
+            \item $P_{\rri\ggi} = P_{\ri}(\si) = P(\si) / \dii^\alpha$
+            \item $I_{\rrj\ggi} = I_{\rj}(\si) = P_{\rj}(\si)$ - interferencja
         \end{itemize}
     \end{frame}
     \begin{frame}
         \frametitle{Model}
         \begin{wrapfigure}{R}{0.5\textwidth}
             \includegraphics[width=0.5\textwidth]{pictures/model-diagram2.png}
-            \caption{$\alpha=2, \beta=1, P=100$}
+            \caption{$\alpha=2, \beta=0.4, P=1000$}
         \end{wrapfigure}
         Oznaczenia cd.:
         \begin{itemize}
-            \item $S_t = {\lo, \ldots, \lm}$ - zbiór połączeń w danym przedziale czasowym
-            \item $I_{\ri} = I_{\ri}(S_t) = \sum_{\lj \in S_t, \lj \neq l_i} I_{\ri}(\sj)$ - całkowita interferencja dla odbiorcy $\ri$
+            \item $S_t = \{\lo, \ldots, \lm\}$ - jeden przedział czasowy
+            \item $I_{\ri} = I_{\ri}(S_t) = \sum_{\lj \in S_t, \lj \neq l_i} I_{\ri}(\sj)$
             \item $N$ - szum otoczenia
             \item $SINR_{\li} = SINR_{\li}(S_t) = \frac{P_{\ri}(\si)}{I_{\ri} + N}$ - [signal-to-interference-plus-noise-ratio] współczynnik sygnału do interferencji
         \end{itemize}
@@ -132,13 +131,13 @@
         \frametitle{Model}
         \begin{wrapfigure}{R}{0.5\textwidth}
             \includegraphics[width=0.5\textwidth]{pictures/model-diagram3.png}
-            \caption{$\alpha=2, \beta=1, P=1000$}
+            \caption{$\alpha=2, \beta=1, P=1000000$}
         \end{wrapfigure}
         Oznaczenia cd.:
         \begin{itemize}
             \item $\beta$ - współczynnik odbioru sygnału, zależny od sprzętu
             \item sygnał jest poprawnie odbierany wtw. $SINR_{\li} \geq \beta$
-            \item harmonogram $S = \{S_1, \ldots, S_T\}$ jest poprawny jeśli $\forall_{S_t \in S} \forall_{\li \in S_t} SINR_{\li}(S_t) \geq \beta$
+            \item harmonogram $S = \{S_1, \ldots, S_T\}$ jest realizowalny jeśli $\forall_{S_t \in S} \forall_{\li \in S_t} SINR_{\li}(S_t) \geq \beta$
         \end{itemize}
     \end{frame}
 \subsection{Problemy}
@@ -146,7 +145,7 @@
         \frametitle{Problemy}
         \begin{wrapfigure}{R}{0.5\textwidth}
             \includegraphics[width=0.5\textwidth]{pictures/model-diagram4.png}
-            \caption{$\alpha=2, \beta=1, P=100000$}
+            \caption{$\alpha=2, \beta=0.4, P=1000000$}
         \end{wrapfigure}
         Problemy:
         \begin{itemize}
@@ -160,15 +159,18 @@
 \subsection{Twierdzenie}
 \begin{frame}
     \frametitle{NP-trudność}
-    \begin{theorem}
-        Problem Multi-Slot w modelu SINR jest NP-trudny.
-    \end{theorem}
     \begin{definition}[Problem Podziału]
         Mając dany skończony zbiór liczb całkowitych określić czy istnieje jego podział na dwa rozłączne podzbiory o równej sumie elementów.
     \end{definition}
+    \pause
     \begin{fact}
         Problem Podziału jest NP-zupełny.
     \end{fact}
+    \pause
+    \begin{theorem}
+        Problem Multi-Slot w modelu SINR jest NP-trudny.
+    \end{theorem}
+    \pause
     \begin{block}{Dowód}
         Pokażemy wielomianową redukcje Problemu Podziału do problemu Multi-Slot w modelu SINR.
     \end{block}
