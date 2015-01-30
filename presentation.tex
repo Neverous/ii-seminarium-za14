@@ -42,15 +42,15 @@
 
 \begin{document}
 
-% STRONA TYTUŁOWA
-\begin{frame}
-    \titlepage
-\end{frame}
-
 \begin{frame}[c]
     \begin{figure}
         \includegraphics[width=\textwidth]{pictures/obligatory-birds.jpg}
     \end{figure}
+\end{frame}
+
+% STRONA TYTUŁOWA
+\begin{frame}
+    \titlepage
 \end{frame}
 
 % PLAN
@@ -60,18 +60,22 @@
 \end{frame}
 
 \def \si {{\color{green}s_i}}
-\def \ggi {{\color{green}i}}
 \def \sj {{\color{green}s_j}}
+\def \sno {{\color{green}s_{n+1}}}
+\def \snt {{\color{green}s_{n+2}}}
 
 \def \ri {{\color{red}r_i}}
-\def \rri {{\color{red}i}}
 \def \rj {{\color{red}r_j}}
 \def \rrj {{\color{red}j}}
+\def \rno {{\color{red}r_{n+1}}}
+\def \rnt {{\color{red}r_{n+2}}}
 
 \def \li {{\color{blue}l_i}}
 \def \lj {{\color{blue}l_j}}
 \def \lo {{\color{blue}l_1}}
 \def \ln {{\color{blue}l_n}}
+\def \lno {{\color{blue}l_{n+1}}}
+\def \lnt {{\color{blue}l_{n+2}}}
 \def \lm {{\color{blue}l_m}}
 
 \def \dii {{\color{cyan}d_{i.i}}}
@@ -87,7 +91,7 @@
         \end{wrapfigure}
         Oznaczenia
         \begin{itemize}
-            \item $L = \{\lo, \ldots, \ln\}$ - połączenia
+            \item $\mathcal{L} = \{\lo, \ldots, \ln\}$ - połączenia
             \item $\li = (\si, \ri)$
             \item $\dij = d(\si, \rj)$
         \end{itemize}
@@ -109,8 +113,8 @@
             \item $P(\si)$ - moc
             \item $\dij^{-\alpha}$ - strata sygnału
             \item $\alpha$ - zazwyczaj $2 \le \alpha \leq 6$
-            \item $P_{\rri\ggi} = P_{\ri}(\si) = P(\si) / \dii^\alpha$
-            \item $I_{\rrj\ggi} = I_{\rj}(\si) = P_{\rj}(\si)$ - interferencja
+            \item $P_{ii} = P_{\ri}(\si) = P(\si) / \dii^\alpha$
+            \item $I_{ji} = I_{\rj}(\si) = P_{\rj}(\si)$ - interferencja
         \end{itemize}
     \end{frame}
     \begin{frame}
@@ -121,7 +125,7 @@
         \end{wrapfigure}
         Oznaczenia cd.:
         \begin{itemize}
-            \item $S_t = \{\lo, \ldots, \lm\}$ - jeden przedział czasowy
+            \item $\mathcal{S}_t = \{\lo, \ldots, \lm\}$ - jeden przedział czasowy
             \item $I_{\ri} = I_{\ri}(S_t) = \sum_{\lj \in S_t, \lj \neq l_i} I_{\ri}(\sj)$
             \item $N$ - szum otoczenia
             \item $SINR_{\li} = SINR_{\li}(S_t) = \frac{P_{\ri}(\si)}{I_{\ri} + N}$ - [signal-to-interference-plus-noise-ratio] współczynnik sygnału do interferencji
@@ -137,7 +141,7 @@
         \begin{itemize}
             \item $\beta$ - współczynnik odbioru sygnału, zależny od sprzętu
             \item sygnał jest poprawnie odbierany wtw. $SINR_{\li} \geq \beta$
-            \item harmonogram $S = \{S_1, \ldots, S_T\}$ jest realizowalny jeśli $\forall_{S_t \in S} \forall_{\li \in S_t} SINR_{\li}(S_t) \geq \beta$
+            \item harmonogram $\mathcal{S} = \{\mathcal{S}_1, \ldots, \mathcal{S}_T\}$ jest realizowalny jeśli $\forall_{\mathcal{S}_t \in \mathcal{S}} \forall_{\li \in \mathcal{S}_t} SINR_{\li}(\mathcal{S}_t) \geq \beta$
         \end{itemize}
     \end{frame}
 \subsection{Problemy}
@@ -152,8 +156,15 @@
             \item (Weighted) One-Slot - jak najwięcej nadających na raz
             \item Multi-Slot - jak najmniej przedziałów
             \item Regulacja mocy - każdy może nadawać z różną mocą
+            \item Inne wariacje
         \end{itemize}
     \end{frame}
+
+\begin{frame}[c]
+    \begin{figure}
+        \includegraphics[width=\textwidth]{pictures/obligatory-monkey.jpg}
+    \end{figure}
+\end{frame}
 
 \section{NP-Trudność}
 \subsection{Twierdzenie}
@@ -181,64 +192,107 @@
     \begin{theorem}
         Problem Multi-Slot w modelu SINR jest NP-trudny.
     \end{theorem}
-    %\begin{wrapfigure}{R}{0.4\textwidth}
-    %    \includegraphics[width=0.4\textwidth]{pictures/np-placement1.png}
-    %\end{wrapfigure}
-    \begin{block}{Dowód(Schemat)}
+    \begin{wrapfigure}{R}{0.5\textwidth}
+        \includegraphics[width=0.5\textwidth]{pictures/np-placement1.png}
+    \end{wrapfigure}
+    \begin{block}{Oznaczenia}
         \begin{itemize}
-            \item $I = \{i_1, \ldots. i_n\}$ - zbiór liczb z Problemu Podziału o sumie $\sigma$
-            \item BSO wszystkie elementy $I$ są dodatnie i różne %(?)
-            \item $L = \{l_1, \ldots, l_{n+2}\}$ - zbiór połączeń dla Multi-Slota
-            \item $\forall_{1 \leq j \leq n} pos(s_j) = (P\cdot{i_j}^\frac{-1}{\alpha}, 0)$ - pozycja nadawców
+            \item $\mathcal{I} = \{i_1, \ldots. i_n\}$ - zbiór liczb z Problemu Podziału o sumie $\sigma$
+            \item BSO wszystkie elementy $\mathcal{I}$ są dodatnie i różne
+            \item $\mathcal{L} = \{\lo, \ldots, \lnt\}$ - zbiór połączeń dla Multi-Slota
+            \item $\forall_{1 \leq j \leq n} pos(\sj) = \Big(\big(\frac{P}{i_j}\big)^\frac{1}{\alpha}, 0\Big)$ - pozycja nadajników
+        \end{itemize}
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    \begin{wrapfigure}{R}{0.5\textwidth}
+        \includegraphics[width=0.5\textwidth]{pictures/np-placement2.png}
+    \end{wrapfigure}
+    \begin{block}{Oznaczenia cd.}
+        \begin{itemize}
             \item $d_{min} = P^\frac{1}{\alpha}\cdot\frac{(i_{max}-1)^\frac{-1}{\alpha}-(i_{max})^\frac{-1}{\alpha}}{1+(n\beta)^\frac{1}{\alpha}}$
-            \item $\forall_{1 \leq j \leq n} pos(r_j) = pos(s_j) + (d_{min}, 0)$ - pozycja odbiorców
+            \item $\forall_{1 \leq j \leq n} pos(\rj) = pos(\sj) + (d_{min}, 0)$ - pozycja odbiorników
+            \item $pos(\rno) = pos(\rnt) = (0, 0)$
+            \item $pos(\sno) = \Big(0, \big(\frac{2P}{\beta\sigma}\big)^\frac{1}{\alpha}\Big)$
+            \item $pos(\snt) = \Big(0, -\big(\frac{2P}{\beta\sigma}\big)^\frac{1}{\alpha}\Big)$
         \end{itemize}
     \end{block}
 \end{frame}
 \begin{frame}
     \frametitle{NP-trudność}
-    \begin{theorem}
-        Problem Multi-Slot w modelu SINR jest NP-trudny.
-    \end{theorem}
-    %\begin{wrapfigure}{R}{0.4\textwidth}
-    %    \includegraphics[width=0.4\textwidth]{pictures/np-placement2.png}
-    %\end{wrapfigure}
-    \begin{block}{Dowód(Schemat cd.)}
-        \begin{itemize}
-            \item $pos(r_{n+1}) = pos(r_{n+2}) = (0, 0)$
-            \item $pos(s_{n+1}) = (0, 2P\cdot(\beta\sigma)^{\frac{-1}{\alpha}})$
-            \item $pos(s_{n+2}) = (0, -2P\cdot(\beta\sigma)^{\frac{-1}{\alpha}})$
-            \item W jednym przedziale się nie da ($r_{n+1}$ oraz $r_{n+2}$ są w tym samym miejscu)
-            \item Da się w dwóch wtw. mamy rozwiązanie Problemu Podziału
-        \end{itemize}
+    \begin{lemma}
+        Niech $\mathcal{L}_i = \{\lj: 1 \leq j \leq n + 1, i \neq j\}$.\\
+        Dla każdego $i \leq n$ kiedy $\li$ jest zaplanowany wraz z elementami $\mathcal{L}_i$ wartość $SINR_\li \ge \beta$,
+        $$
+            SINR_\li(\mathcal{L}_i) = \frac{P_{ii}}{\sum_{\lj \in \mathcal{L}_i} I_{ij}} > \beta
+        $$
+    \end{lemma}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    \centering
+    \includegraphics{pictures/np-placement3.png}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    \begin{lemma}
+        Niech $\mathcal{L}_i = \{\lj: 1 \leq j \leq n + 1, i \neq j\}$.\\
+        Dla każdego $i \leq n$ kiedy $\li$ jest zaplanowany wraz z elementami $\mathcal{L}_i$ wartość $SINR_\li \ge \beta$,
+        $$
+            SINR_\li(\mathcal{L}_i) = \frac{P_{ii}}{\sum_{\lj \in \mathcal{L}_i} I_{ij}} > \beta
+        $$
+    \end{lemma}
+    \pause
+    \begin{block}{Wniosek}
+        Jeśli zapomnimy o jednym z $\lno, \lnt$ wszystkie pozostałe połączenia są realizowalne w jednym przedziale czasowym.
     \end{block}
 \end{frame}
 \begin{frame}
     \frametitle{NP-trudność}
-    \begin{theorem}
-        Problem Multi-Slot w modelu SINR jest NP-trudny.
-    \end{theorem}
-    %\begin{wrapfigure}{R}{0.4\textwidth}
-    %    \includegraphics[width=0.4\textwidth]{pictures/np-placement3.png}
-    %\end{wrapfigure}
-    \begin{block}{Dowód(Schemat cd.)}
-        \begin{lemma}
-            Niech $L_i = \{l_j: 1 \leq j \leq n + 1, i \neq j\}$.\\
-            Dla każdego $i \leq n$ kiedy $l_i$ jest zaplanowany wraz z elementami $L_i$ wartość $SINR \ge \beta$.
-        \end{lemma}
-        \begin{itemize}
-            \item $P_{r_{n+1}}(s_{n+1}) = \frac{\beta\sigma}{2}$
-            \item $I_{r_{n+1}}(s_j) = i_j$
-            \item $I_{r_{n+1}} = \frac{\sigma}{2}$
-            \item $SINR_{r_{n+1}} \geq \beta$
-        \end{itemize}
+    Jeśli mamy rozwiązanie Problemu Podziału to mamy też Multi-Slota w 2 przedziałach czasowych.
+    \begin{block}{Uzasadnienie}
+        Dostajemy $\mathcal{I}_1, \mathcal{I}_2 \in \mathcal{I}$ takie że sumują się do $\sigma/2$. Przydzielamy wszystkie $\lj$ takie że $i_j \in \mathcal{I}_1$ to pierwszego przedziału wraz z $\lno$ a pozostałe do drugiego.
     \end{block}
+    \pause
+    \begin{block}{Obserwacja}
+        Moc sygnału na odbiorniku $\rno$: $P_\rno(\sno) = \frac{\beta\sigma}{2}$.
+    \end{block}
+    \pause
+    \begin{block}{Obserwacja}
+        Moc interferencji na odbiorniku $\rno$: $I_\rno(\sj) = i_j$. Co daje całkowitą interferencje $I_\rno = \frac{\sigma}{2}$.
+    \end{block}
+    \pause
+    \begin{block}{Wniosek}
+        $SINR_\rno \geq \beta$
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    Jeśli nie ma rozwiązania Problemu Podziału to nie da się rozwiązać Multi-Slota w 2 przedziałach czasowych.
+    \begin{block}{Uzasadnienie}
+        Problem Podziału nie ma rozwiązania, a to znaczy że dla każdego podziału jeden ze zbiorów ma sumę większą niż $\sigma/2$.
+    \end{block}
+    \pause
+    \begin{block}{Obserwacja}
+        Dla każdego podziału $\li$ na dwa przedziały czasowe całkowita interferencja w $(0, 0)$ dla jednego z nich będzie większa niż $\sigma/2$ co zakłóci odbiór sygnału.
+    \end{block}
+    \pause
+    \begin{block}{Wniosek}
+        Pokazaliśmy redukcję wielomianową z Problemu Podziału, który jest NP-zupełny, do Multi-Slot z czego wynika że Multi-Slot jest NP-trudny.
+    \end{block}
+\end{frame}
+
+\begin{frame}[c]
+    \begin{figure}
+        \includegraphics[width=0.5\textwidth]{pictures/obligatory-xkcd.png}
+    \end{figure}
 \end{frame}
 
 \section{Aproksymacja One-Slot}
 \begin{frame}
     \frametitle{Problem}
-        Czy instnieje algorytm rozwiązujący One-Slot Scheduling działający w czasie wielomianowym,
+        Czy istnieje algorytm rozwiązujący One-Slot Scheduling działający w czasie wielomianowym,
         który daje wynik gorszy tylko o stały czynnik od optymalnego?
         \pause
         \vfill
@@ -286,7 +340,7 @@
     \frametitle{Algorytm}
     Niech $\lambda$ będzie pewną (dużą) stałą, do ustalenia później.
     \begin{itemize}
-        \item Postortuj połączenia w kolejności rosnącej długości: $l_1, l_2, \cdots, l_n$.
+        \item Posortuj połączenia w kolejności rosnącej długości: $l_1, l_2, \cdots, l_n$.
         \item Niech $S = \varnothing$.
         \item Dla połączenia $l_i = l_1, l_2, \cdots, l_n$:
         \begin{itemize}
