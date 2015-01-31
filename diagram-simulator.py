@@ -5,7 +5,8 @@ import math
 
 resolution = (500, 500)
 beta = 1.0
-power = 10.0
+power = 1500.0
+noise = 0.0
 points = set()
 drawArea = None
 
@@ -65,7 +66,7 @@ def simulate(e):
                 if (x, y) == p:
                     continue
 
-                signals.append((power * resolution[0] / 10 / distance((x, y), p) ** 2, i))
+                signals.append((power / (distance((x, y), p) ** 2), i))
 
             signals.sort()
             if not signals:
@@ -73,15 +74,13 @@ def simulate(e):
 
             summed = sum([p for p, _ in signals])
             for s, i in signals:
-                if s / (summed - s + 1.0) >= beta:
+                if (summed - s + noise) <= 0.0001 or s / (summed - s + noise) >= beta:
                     painter.setBrush(COLORS[i % len(COLORS)])
                     painter.setPen(COLORS[i % len(COLORS)])
                     painter.drawRect(x * drawArea.width() // resolution[0],
                                      y * drawArea.height() // resolution[1],
                                      drawArea.width() // resolution[0],
                                      drawArea.height() // resolution[1])
-
-
 
     painter.setBrush(QtCore.Qt.black)
     painter.setPen(QtCore.Qt.black)

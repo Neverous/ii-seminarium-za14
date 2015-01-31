@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE KigDocument>
+<KigDocument CompatibilityVersion="0.7.0" axes="1" Version="1.0" grid="1">
+ <CoordinateSystem>Euclidean</CoordinateSystem>
+ <Hierarchy>
+  <Data id="1" type="string">r4</Data>
+  <Data id="2" type="string">%1</Data>
+  <Data id="3" type="string">%1</Data>
+  <Data id="4" type="string">s3</Data>
+  <Data id="5" type="string">r3</Data>
+  <Data id="6" type="int">0</Data>
+  <Data id="7" type="string">%1</Data>
+  <Data id="8" type="double">-2.59171</Data>
+  <Data id="9" type="double">0.460749</Data>
+  <Data id="10" type="int">0</Data>
+  <Data id="11" type="double">-2.30375</Data>
+  <Data id="12" type="double">0.403156</Data>
+  <Data id="13" type="int">0</Data>
+  <Data id="14" type="double">0.460749</Data>
+  <Data id="15" type="string">%1</Data>
+  <Data id="16" type="string">r1</Data>
+  <Data id="17" type="double">-2.47653</Data>
+  <Data id="18" type="double">0.345562</Data>
+  <Data id="19" type="double">23.3923</Data>
+  <Data id="20" type="double">0</Data>
+  <Data id="21" type="double">-2.47653</Data>
+  <Data id="22" type="string">%1</Data>
+  <Data id="23" type="double">0</Data>
+  <Data id="24" type="double">0.715619</Data>
+  <Data id="25" type="double">39.7846</Data>
+  <Data id="26" type="string">s4</Data>
+  <Data id="27" type="int">0</Data>
+  <Data id="28" type="double">28.4249</Data>
+  <Object id="29" type="FixedPoint">
+   <Parent id="23"/>
+   <Parent id="28"/>
+  </Object>
+  <Object id="30" type="RelativePoint">
+   <Parent id="17"/>
+   <Parent id="18"/>
+   <Parent id="29"/>
+  </Object>
+  <Data id="31" type="double">1.76318</Data>
+  <Data id="32" type="double">0.669188</Data>
+  <Data id="33" type="double">27.4249</Data>
+  <Data id="34" type="string">s2</Data>
+  <Data id="35" type="int">0</Data>
+  <Data id="36" type="double">0</Data>
+  <Data id="37" type="double">0.862102</Data>
+  <Data id="38" type="int">0</Data>
+  <Data id="39" type="string">%1</Data>
+  <Data id="40" type="double">19.3923</Data>
+  <Object id="41" type="FixedPoint">
+   <Parent id="36"/>
+   <Parent id="40"/>
+  </Object>
+  <Data id="42" type="int">0</Data>
+  <Data id="43" type="double">0.630206</Data>
+  <Data id="44" type="double">1.84468</Data>
+  <Data id="45" type="string">%1</Data>
+  <Data id="46" type="double">0</Data>
+  <Data id="47" type="double">20.3923</Data>
+  <Object id="48" type="FixedPoint">
+   <Parent id="20"/>
+   <Parent id="47"/>
+  </Object>
+  <Object id="49" type="RelativePoint">
+   <Parent id="21"/>
+   <Parent id="14"/>
+   <Parent id="48"/>
+  </Object>
+  <Object id="50" type="Label">
+   <Parent id="13"/>
+   <Parent id="49"/>
+   <Parent id="2"/>
+   <Parent id="1"/>
+  </Object>
+  <Data id="51" type="int">0</Data>
+  <Data id="52" type="double">17.345</Data>
+  <Data id="53" type="double">0</Data>
+  <Object id="54" type="FixedPoint">
+   <Parent id="53"/>
+   <Parent id="33"/>
+  </Object>
+  <Object id="55" type="RelativePoint">
+   <Parent id="44"/>
+   <Parent id="43"/>
+   <Parent id="54"/>
+  </Object>
+  <Object id="56" type="Label">
+   <Parent id="35"/>
+   <Parent id="55"/>
+   <Parent id="45"/>
+   <Parent id="34"/>
+  </Object>
+  <Data id="57" type="double">0</Data>
+  <Data id="58" type="string">%1</Data>
+  <Data id="59" type="double">-17.345</Data>
+  <Data id="60" type="double">1.75244</Data>
+  <Object id="61" type="RelativePoint">
+   <Parent id="60"/>
+   <Parent id="37"/>
+   <Parent id="41"/>
+  </Object>
+  <Object id="62" type="Label">
+   <Parent id="42"/>
+   <Parent id="61"/>
+   <Parent id="58"/>
+   <Parent id="26"/>
+  </Object>
+  <Data id="63" type="double">0</Data>
+  <Object id="64" type="FixedPoint">
+   <Parent id="52"/>
+   <Parent id="63"/>
+  </Object>
+  <Data id="65" type="int">0</Data>
+  <Data id="66" type="string">s6</Data>
+  <Data id="67" type="double">22.3923</Data>
+  <Object id="68" type="FixedPoint">
+   <Parent id="46"/>
+   <Parent id="67"/>
+  </Object>
+  <Object id="69" type="RelativePoint">
+   <Parent id="31"/>
+   <Parent id="32"/>
+   <Parent id="68"/>
+  </Object>
+  <Object id="70" type="Label">
+   <Parent id="38"/>
+   <Parent id="69"/>
+   <Parent id="39"/>
+   <Parent id="4"/>
+  </Object>
+  <Data id="71" type="double">2.2233</Data>
+  <Data id="72" type="double">38.7846</Data>
+  <Object id="73" type="FixedPoint">
+   <Parent id="57"/>
+   <Parent id="72"/>
+  </Object>
+  <Data id="74" type="double">1.45112</Data>
+  <Data id="75" type="string">s5</Data>
+  <Data id="76" type="double">2.00373</Data>
+  <Data id="77" type="double">2.57623</Data>
+  <Data id="78" type="string">s1</Data>
+  <Data id="79" type="int">0</Data>
+  <Data id="80" type="double">0.800926</Data>
+  <Object id="81" type="RelativePoint">
+   <Parent id="71"/>
+   <Parent id="80"/>
+   <Parent id="73"/>
+  </Object>
+  <Object id="82" type="Label">
+   <Parent id="79"/>
+   <Parent id="81"/>
+   <Parent id="3"/>
+   <Parent id="78"/>
+  </Object>
+  <Data id="83" type="int">0</Data>
+  <Data id="84" type="string">%1</Data>
+  <Data id="85" type="double">0</Data>
+  <Object id="86" type="FixedPoint">
+   <Parent id="59"/>
+   <Parent id="85"/>
+  </Object>
+  <Object id="87" type="RelativePoint">
+   <Parent id="24"/>
+   <Parent id="76"/>
+   <Parent id="86"/>
+  </Object>
+  <Data id="88" type="string">%1</Data>
+  <Data id="89" type="double">0.0485645</Data>
+  <Data id="90" type="string">r2</Data>
+  <Object id="91" type="Label">
+   <Parent id="51"/>
+   <Parent id="30"/>
+   <Parent id="7"/>
+   <Parent id="90"/>
+  </Object>
+  <Data id="92" type="double">0.715619</Data>
+  <Object id="93" type="RelativePoint">
+   <Parent id="92"/>
+   <Parent id="77"/>
+   <Parent id="64"/>
+  </Object>
+  <Object id="94" type="Label">
+   <Parent id="65"/>
+   <Parent id="93"/>
+   <Parent id="88"/>
+   <Parent id="75"/>
+  </Object>
+  <Data id="95" type="string">r5</Data>
+  <Data id="96" type="string">%1</Data>
+  <Object id="97" type="Label">
+   <Parent id="27"/>
+   <Parent id="87"/>
+   <Parent id="96"/>
+   <Parent id="66"/>
+  </Object>
+  <Data id="98" type="double">-0.10158</Data>
+  <Data id="99" type="double">1.49286</Data>
+  <Data id="100" type="double">0</Data>
+  <Object id="101" type="FixedPoint">
+   <Parent id="100"/>
+   <Parent id="25"/>
+  </Object>
+  <Object id="102" type="RelativePoint">
+   <Parent id="11"/>
+   <Parent id="12"/>
+   <Parent id="101"/>
+  </Object>
+  <Object id="103" type="Label">
+   <Parent id="10"/>
+   <Parent id="102"/>
+   <Parent id="15"/>
+   <Parent id="16"/>
+  </Object>
+  <Data id="104" type="double">0</Data>
+  <Object id="105" type="FixedPoint">
+   <Parent id="104"/>
+   <Parent id="19"/>
+  </Object>
+  <Object id="106" type="RelativePoint">
+   <Parent id="8"/>
+   <Parent id="9"/>
+   <Parent id="105"/>
+  </Object>
+  <Object id="107" type="Label">
+   <Parent id="6"/>
+   <Parent id="106"/>
+   <Parent id="22"/>
+   <Parent id="5"/>
+  </Object>
+  <Object id="108" type="FixedPoint">
+   <Parent id="98"/>
+   <Parent id="89"/>
+  </Object>
+  <Object id="109" type="RelativePoint">
+   <Parent id="74"/>
+   <Parent id="99"/>
+   <Parent id="108"/>
+  </Object>
+  <Object id="110" type="Label">
+   <Parent id="83"/>
+   <Parent id="109"/>
+   <Parent id="84"/>
+   <Parent id="95"/>
+  </Object>
+ </Hierarchy>
+ <View>
+  <Draw object="73" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="78" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="82" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="68" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="4" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="41" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="26" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="62" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="56" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="54" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="34" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="70" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="64" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="75" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="108" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="95" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="86" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="66" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="94" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="97" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#00ff00" width="13"/>
+  <Draw object="110" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="101" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="16" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="105" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="5" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="107" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="29" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="90" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="91" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="103" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="48" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="1" style="SolidLine" color="#ff0000" width="13"/>
+  <Draw object="50" font="Droid Sans,9,-1,5,50,0,0,0,0,0" shown="true" point-style="Round" namecalcer="none" style="SolidLine" color="#ff0000" width="13"/>
+ </View>
+</KigDocument>

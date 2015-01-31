@@ -200,7 +200,7 @@
             \item $\mathcal{I} = \{i_1, \ldots. i_n\}$ - zbiór liczb z Problemu Podziału o sumie $\sigma$
             \item BSO wszystkie elementy $\mathcal{I}$ są dodatnie i różne
             \item $\mathcal{L} = \{\lo, \ldots, \lnt\}$ - zbiór połączeń dla Multi-Slota
-            \item $\forall_{1 \leq j \leq n} pos(\sj) = \Big(\big(\frac{P}{i_j}\big)^\frac{1}{\alpha}, 0\Big)$ - pozycja nadajników
+            \item $\forall_{1 \leq j \leq n} pos(\sj) = \Big(0, \big(\frac{P}{i_j}\big)^\frac{1}{\alpha}\Big)$ - pozycja nadajników
         \end{itemize}
     \end{block}
 \end{frame}
@@ -212,10 +212,10 @@
     \begin{block}{Oznaczenia cd.}
         \begin{itemize}
             \item $d_{min} = P^\frac{1}{\alpha}\cdot\frac{(i_{max}-1)^\frac{-1}{\alpha}-(i_{max})^\frac{-1}{\alpha}}{1+(n\beta)^\frac{1}{\alpha}}$
-            \item $\forall_{1 \leq j \leq n} pos(\rj) = pos(\sj) + (d_{min}, 0)$ - pozycja odbiorników
+            \item $\forall_{1 \leq j \leq n} pos(\rj) = pos(\sj) + (0, d_{min})$ - pozycja odbiorników
             \item $pos(\rno) = pos(\rnt) = (0, 0)$
-            \item $pos(\sno) = \Big(0, \big(\frac{2P}{\beta\sigma}\big)^\frac{1}{\alpha}\Big)$
-            \item $pos(\snt) = \Big(0, -\big(\frac{2P}{\beta\sigma}\big)^\frac{1}{\alpha}\Big)$
+            \item $pos(\sno) = \Big(\big(\frac{2P}{\beta\sigma}\big)^\frac{1}{\alpha}, 0\Big)$
+            \item $pos(\snt) = \Big(-\big(\frac{2P}{\beta\sigma}\big)^\frac{1}{\alpha}, 0\Big)$
         \end{itemize}
     \end{block}
 \end{frame}
@@ -230,9 +230,8 @@
     \end{lemma}
 \end{frame}
 \begin{frame}
-    \frametitle{NP-trudność}
     \centering
-    \includegraphics{pictures/np-placement3.png}
+    \includegraphics[width=0.75\textwidth]{pictures/np-placement3.png}
 \end{frame}
 \begin{frame}
     \frametitle{NP-trudność}
@@ -262,6 +261,25 @@
     \begin{block}{Obserwacja}
         Moc interferencji na odbiorniku $\rno$: $I_\rno(\sj) = i_j$. Co daje całkowitą interferencje $I_\rno = \frac{\sigma}{2}$.
     \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    \centering
+    \includegraphics[width=0.5\textwidth]{pictures/np-ok1.png}
+    \includegraphics[width=0.5\textwidth]{pictures/np-ok2.png}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    Jeśli mamy rozwiązanie Problemu Podziału to mamy też Multi-Slota w 2 przedziałach czasowych.
+    \begin{block}{Uzasadnienie}
+        Dostajemy $\mathcal{I}_1, \mathcal{I}_2 \in \mathcal{I}$ takie że sumują się do $\sigma/2$. Przydzielamy wszystkie $\lj$ takie że $i_j \in \mathcal{I}_1$ to pierwszego przedziału wraz z $\lno$ a pozostałe do drugiego.
+    \end{block}
+    \begin{block}{Obserwacja}
+        Moc sygnału na odbiorniku $\rno$: $P_\rno(\sno) = \frac{\beta\sigma}{2}$.
+    \end{block}
+    \begin{block}{Obserwacja}
+        Moc interferencji na odbiorniku $\rno$: $I_\rno(\sj) = i_j$. Co daje całkowitą interferencje $I_\rno = \frac{\sigma}{2}$.
+    \end{block}
     \pause
     \begin{block}{Wniosek}
         $SINR_\rno \geq \beta$
@@ -274,6 +292,22 @@
         Problem Podziału nie ma rozwiązania, a to znaczy że dla każdego podziału jeden ze zbiorów ma sumę większą niż $\sigma/2$.
     \end{block}
     \pause
+    \begin{block}{Obserwacja}
+        Dla każdego podziału $\li$ na dwa przedziały czasowe całkowita interferencja w $(0, 0)$ dla jednego z nich będzie większa niż $\sigma/2$ co zakłóci odbiór sygnału.
+    \end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    \centering
+    \includegraphics[width=0.5\textwidth]{pictures/np-error1.png}
+    \includegraphics[width=0.5\textwidth]{pictures/np-error2.png}
+\end{frame}
+\begin{frame}
+    \frametitle{NP-trudność}
+    Jeśli nie ma rozwiązania Problemu Podziału to nie da się rozwiązać Multi-Slota w 2 przedziałach czasowych.
+    \begin{block}{Uzasadnienie}
+        Problem Podziału nie ma rozwiązania, a to znaczy że dla każdego podziału jeden ze zbiorów ma sumę większą niż $\sigma/2$.
+    \end{block}
     \begin{block}{Obserwacja}
         Dla każdego podziału $\li$ na dwa przedziały czasowe całkowita interferencja w $(0, 0)$ dla jednego z nich będzie większa niż $\sigma/2$ co zakłóci odbiór sygnału.
     \end{block}
