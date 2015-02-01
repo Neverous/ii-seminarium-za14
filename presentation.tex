@@ -95,6 +95,7 @@
             \item $\li = (\si, \ri)$
             \item $\dij = d(\si, \rj)$
         \end{itemize}
+        ~\\
         Założenia
         \begin{itemize}
             \item $\forall_{\si, \rj} \dij \geq 1$
@@ -113,7 +114,7 @@
             \item $P(\si)$ - moc
             \item $\dij^{-\alpha}$ - strata sygnału
             \item $\alpha$ - zazwyczaj $2 \le \alpha \leq 6$
-            \item $P_{ii} = P_{\ri}(\si) = P(\si) / \dii^\alpha$
+            \item $P_{ii} = P_{\ri}(\si) = P(\si) \cdot \dii^{-\alpha}$
             \item $I_{ji} = I_{\rj}(\si) = P_{\rj}(\si)$ - interferencja
         \end{itemize}
     \end{frame}
@@ -126,9 +127,9 @@
         Oznaczenia cd.:
         \begin{itemize}
             \item $\mathcal{S}_t = \{\lo, \ldots, \lm\}$ - jeden przedział czasowy
-            \item $I_{\ri} = I_{\ri}(S_t) = \sum_{\lj \in S_t, \lj \neq l_i} I_{\ri}(\sj)$
+            \item $I_{\ri} = I_{\ri}(S_t) = \sum_{\lj \in S_t, \lj \neq \li} I_{\ri}(\sj)$
             \item $N$ - szum otoczenia
-            \item $SINR_{\li} = SINR_{\li}(S_t) = \frac{P_{\ri}(\si)}{I_{\ri} + N}$ - [signal-to-interference-plus-noise-ratio] współczynnik sygnału do interferencji
+            \item $SINR_{\li} = SINR_{\li}(S_t) = \frac{P_{\ri}(\si)}{I_{\ri} + N}$ - [signal-to-interference-plus-noise-ratio] współczynnik sygnału do szumu i interferencji
         \end{itemize}
     \end{frame}
     \begin{frame}
@@ -153,7 +154,7 @@
         \end{wrapfigure}
         Problemy:
         \begin{itemize}
-            \item (Weighted) One-Slot - jak najwięcej nadających na raz
+            \item (Weighted) One-Slot - jak najwięcej połączeń na raz
             \item Multi-Slot - jak najmniej przedziałów
             \item Regulacja mocy - każdy może nadawać z różną mocą
             \item Inne wariacje
@@ -166,12 +167,12 @@
     \end{figure}
 \end{frame}
 
-\section{NP-Trudność}
+\section{NP-Trudność Multi-Slot}
 \subsection{Twierdzenie}
 \begin{frame}
-    \frametitle{NP-trudność}
+    \frametitle{NP-trudność Multi-Slot}
     \begin{definition}[Problem Podziału]
-        Mając dany skończony zbiór liczb całkowitych określić czy istnieje jego podział na dwa rozłączne podzbiory o równej sumie elementów.
+        Mając dany skończony zbiór liczb całkowitych dodatnich określić czy istnieje jego podział na dwa rozłączne podzbiory o równej sumie elementów.
     \end{definition}
     \pause
     \begin{fact}
@@ -186,6 +187,18 @@
         Pokażemy wielomianową redukcje Problemu Podziału do problemu Multi-Slot w modelu SINR.
     \end{block}
 \end{frame}
+\subsection{Idea dowodu}
+\begin{frame}
+    \frametitle{Idea dowodu}
+    Na podstawie zbioru liczb z Problemu Podziału stworzymy instancje Multi-Slot o następujących własnościach:
+    \begin{itemize}
+        \item Połączenia będą odpowiadać liczbom z Problemu Podziału
+        \item Poza dodatkowymi dwoma, które będą służyć za strażników
+        \item Wszystkie połączenia $\lj$ niebędące strażnikami będą w punkcie $(0, 0)$ wywoływać interferencje równą $i_j$
+        \item Strażnicy będą mieć odbiorniki w punkcie $(0, 0)$ i nadajniki w takiej odległości aby moc połączenia wynosiła $\frac{\sigma}{2}$
+        \item Wszystkie $\lj$ dla $j \leq n$ są realizowalne w jednym przedziale czasowym
+    \end{itemize}
+\end{frame}
 \subsection{Dowód}
 \begin{frame}
     \frametitle{NP-trudność}
@@ -198,7 +211,7 @@
     \begin{block}{Oznaczenia}
         \begin{itemize}
             \item $\mathcal{I} = \{i_1, \ldots. i_n\}$ - zbiór liczb z Problemu Podziału o sumie $\sigma$
-            \item BSO wszystkie elementy $\mathcal{I}$ są dodatnie i różne
+            \item BSO wszystkie elementy $\mathcal{I}$ są różne
             \item $\mathcal{L} = \{\lo, \ldots, \lnt\}$ - zbiór połączeń dla Multi-Slota
             \item $\forall_{1 \leq j \leq n} pos(\sj) = \Big(0, \big(\frac{P}{i_j}\big)^\frac{1}{\alpha}\Big)$ - pozycja nadajników
         \end{itemize}
@@ -251,7 +264,7 @@
     \frametitle{NP-trudność}
     Jeśli mamy rozwiązanie Problemu Podziału to mamy też Multi-Slota w 2 przedziałach czasowych.
     \begin{block}{Uzasadnienie}
-        Dostajemy $\mathcal{I}_1, \mathcal{I}_2 \in \mathcal{I}$ takie że sumują się do $\sigma/2$. Przydzielamy wszystkie $\lj$ takie że $i_j \in \mathcal{I}_1$ to pierwszego przedziału wraz z $\lno$ a pozostałe do drugiego.
+        Dostajemy $\mathcal{I}_1, \mathcal{I}_2 \subset \mathcal{I}$ takie że sumują się do $\sigma/2$. Przydzielamy wszystkie $\lj$ takie że $i_j \in \mathcal{I}_1$ to pierwszego przedziału wraz z $\lno$ a pozostałe do drugiego.
     \end{block}
     \pause
     \begin{block}{Obserwacja}
@@ -497,6 +510,6 @@
     \end{lemma}
 \end{frame}
 
-\section{Wypukłość obszarów SINR}
+%\section{Wypukłość obszarów SINR}
 \section{Do zrobienia}
 \end{document}
