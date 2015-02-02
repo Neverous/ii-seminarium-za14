@@ -336,6 +336,13 @@
     \end{figure}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Paul Halmos}
+    \vfill
+    ``Striving for the <<clear reception of the message>> you are allowed to lie a little
+      but you must never mislead.''
+\end{frame}
+
 \section{Aproksymacja One-Slot}
 \begin{frame}
     \frametitle{Problem}
@@ -352,7 +359,7 @@
     \begin{itemize}
         \item Wpływ: $a_v(S) = \eta_v \sum_{w \in S} \frac{I_{wv}}{P_{vv}}$
         \item Łatwość zakłócenia: $\eta_v = \frac{1}{\frac{1}{\beta} - \frac{N}{P_{vv}}}$
-        \item $OPT_p$ - rozwiązanie, w którym dla każdego połączenia $v$: $a_v(OPT_p) \le p^{-\alpha}$
+        \item $OPT_p$ - rozwiązanie, w którym dla każdego połączenia $v$: $a_v(OPT_p) \le 1/p$
     \end{itemize}
 \end{frame}
 
@@ -374,7 +381,7 @@
 \begin{frame}
     \frametitle{$q$-bliskość}
     \begin{definition}
-        Mówimy, że połączenie $w$ jest $q$-blisko połączenia $v$ jeśli $d_{wv} \ge q \eta_v^{1/\alpha} d_{vv}$.
+        Mówimy, że połączenie $w$ jest $q$-blisko połączenia $v$ jeśli $d_{wv} \le q \eta_v^{1/\alpha} d_{vv}$.
         Równoważnie: $a_v(w) = a_v(\{w\}) \ge q^{-\alpha}$.
     \end{definition}
 
@@ -504,10 +511,21 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{$|OPT_p| \lesssim |OPT|$}
+    \frametitle{Porównanie do $OPT$}
     \begin{lemma}
-        $|OPT_p| \le \lceil (2p)^2 \rceil |OPT|$
+        $|OPT| \le \lceil (2p)^2 \rceil |OPT_p|$
     \end{lemma}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Aproksymacja dla Multi-Slot}
+    \begin{lemma}
+        Istnieje algorytm o logarytmicznym współczynniku aproksymacji dla problemu
+        Multi-Slot.
+    \end{lemma}
+    Dowód: Wykonaj poprzedni algorytm tyle razy, aż skończą się połączenia. Ponieważ z
+    każdą iteracją liczba połączeń maleje o stały czynnik, algorytm zakończy się po
+    $log n$ krokach.
 \end{frame}
 
 %\section{Wypukłość obszarów SINR}
